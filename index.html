@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería de Arte</title>
+    <style>
+        :root {
+            /* CSS HSL */
+            --black: hsla(0, 0%, 0%, 1);
+            --jet: hsla(0, 0%, 16%, 1);
+            --davys-gray: hsla(0, 0%, 29%, 1);
+            --eerie-black: hsla(0, 0%, 15%, 1);
+            --bistre: hsla(24, 32%, 18%, 1);
+            --raw-umber: hsla(24, 35%, 41%, 1);
+            --ecru: hsla(46, 32%, 55%, 1);
+            --ecru-2: hsla(47, 51%, 67%, 1);
+            --flax: hsla(47, 66%, 72%, 1);
+            --alabaster: hsla(45, 27%, 91%, 1);
+        }
+
+        body {
+            background-color: var(--alabaster);
+            color: var(--bistre);
+            font-family: Arial, sans-serif;
+        }
+
+        nav ul {
+            list-style-type: none;
+            background-color: var(--eerie-black);
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--ecru);
+            padding: 5px 10px;
+            background-color: var(--raw-umber);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--davys-gray);
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+            background-color: var(--jet);
+            color: var(--ecru);
+        }
+
+        button {
+            background-color: var(--raw-umber);
+            color: var(--eerie-black);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--davys-gray);
+        }
+
+        form {
+            background-color: var(--eerie-black);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid var(--davys-gray);
+            border-radius: 5px;
+        }
+
+        label {
+            color: var(--ecru);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navegación -->
+<nav>
+    <ul>
+        <li><a href="#" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-target="galeria">Galería de Fotos</a></li>
+        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- Secciones -->
+<section id="inicio">
+    <h1>Bienvenido a Nuestra Galería de Arte</h1>
+    <p>Explora colecciones únicas de los mejores artistas contemporáneos y clásicos.</p>
+</section>
+
+<section id="galeria">
+    <h2>Galería de Fotos</h2>
+    <img src="imagen1.jpg" alt="Descripción de la imagen 1">
+    <img src="imagen2.jpg" alt="Descripción de la imagen 2">
+    <img src="imagen3.jpg" alt="Descripción de la imagen 3">
+    <img src="imagen4.jpg" alt="Descripción de la imagen 4">
+</section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<script>
+    // JavaScript para cambiar la sección visible
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('inicio').style.display = 'block';
+
+        const changeSection = (targetId) => {
+            document.querySelectorAll('section').forEach((section) => {
+                section.style.display = 'none';
+            });
+
+            document.getElementById(targetId).style.display = 'block';
+        };
+
+        document.querySelectorAll('.nav-link').forEach((link) => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                changeSection(targetId);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
